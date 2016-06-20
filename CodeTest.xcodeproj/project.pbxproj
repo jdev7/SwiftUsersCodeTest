@@ -12,6 +12,17 @@
 		0925723B1D1876DE0016CE58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092572391D1876DE0016CE58 /* Main.storyboard */; };
 		0925723D1D1876DE0016CE58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0925723C1D1876DE0016CE58 /* Assets.xcassets */; };
 		092572401D1876DE0016CE58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0925723E1D1876DE0016CE58 /* LaunchScreen.storyboard */; };
+		0925724E1D1877E50016CE58 /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925724D1D1877E50016CE58 /* RESTClient.swift */; };
+		092572501D187A120016CE58 /* RESTClientImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925724F1D187A120016CE58 /* RESTClientImplementation.swift */; };
+		092572521D187F900016CE58 /* UsersAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572511D187F900016CE58 /* UsersAPIHelper.swift */; };
+		092572551D18819C0016CE58 /* NSError+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572541D18819C0016CE58 /* NSError+Utils.swift */; };
+		092572571D1884580016CE58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572561D1884580016CE58 /* User.swift */; };
+		092572591D1888470016CE58 /* DataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572581D1888470016CE58 /* DataBuilder.swift */; };
+		0925725C1D189F170016CE58 /* UserBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925725B1D189F170016CE58 /* UserBuilder.swift */; };
+		0925725E1D189F780016CE58 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925725D1D189F780016CE58 /* Location.swift */; };
+		092572601D189F8B0016CE58 /* UserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925725F1D189F8B0016CE58 /* UserName.swift */; };
+		092572621D189F9D0016CE58 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572611D189F9D0016CE58 /* Picture.swift */; };
+		B048E71A2CE25E4557B5138A /* Pods_TestCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A417AA434C039E41E9222780 /* Pods_TestCode.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +33,19 @@
 		0925723C1D1876DE0016CE58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0925723F1D1876DE0016CE58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		092572411D1876DE0016CE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0925724D1D1877E50016CE58 /* RESTClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClient.swift; sourceTree = "<group>"; };
+		0925724F1D187A120016CE58 /* RESTClientImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClientImplementation.swift; sourceTree = "<group>"; };
+		092572511D187F900016CE58 /* UsersAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersAPIHelper.swift; sourceTree = "<group>"; };
+		092572541D18819C0016CE58 /* NSError+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Utils.swift"; sourceTree = "<group>"; };
+		092572561D1884580016CE58 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		092572581D1888470016CE58 /* DataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBuilder.swift; sourceTree = "<group>"; };
+		0925725B1D189F170016CE58 /* UserBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserBuilder.swift; sourceTree = "<group>"; };
+		0925725D1D189F780016CE58 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		0925725F1D189F8B0016CE58 /* UserName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserName.swift; sourceTree = "<group>"; };
+		092572611D189F9D0016CE58 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		29CA9A1034F8A8B51997CEF3 /* Pods-TestCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestCode/Pods-TestCode.debug.xcconfig"; sourceTree = "<group>"; };
+		426CC4E8E6A334243A9615FE /* Pods-TestCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestCode/Pods-TestCode.release.xcconfig"; sourceTree = "<group>"; };
+		A417AA434C039E41E9222780 /* Pods_TestCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B048E71A2CE25E4557B5138A /* Pods_TestCode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +65,8 @@
 			children = (
 				092572341D1876DE0016CE58 /* TestCode */,
 				092572331D1876DD0016CE58 /* Products */,
+				BD052D0B7210EDB2D4A8D961 /* Pods */,
+				2517502C832BEB166CBF9702 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +81,8 @@
 		092572341D1876DE0016CE58 /* TestCode */ = {
 			isa = PBXGroup;
 			children = (
+				092572481D1876F50016CE58 /* ViewControllers */,
+				092572471D1876EC0016CE58 /* Common */,
 				092572351D1876DE0016CE58 /* AppDelegate.swift */,
 				092572371D1876DE0016CE58 /* ViewController.swift */,
 				092572391D1876DE0016CE58 /* Main.storyboard */,
@@ -64,6 +93,87 @@
 			path = TestCode;
 			sourceTree = "<group>";
 		};
+		092572471D1876EC0016CE58 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				092572531D1881780016CE58 /* Utils */,
+				092572491D1876FF0016CE58 /* Models */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		092572481D1876F50016CE58 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		092572491D1876FF0016CE58 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0925724C1D18772B0016CE58 /* Network */,
+				0925724B1D1877240016CE58 /* DataModels */,
+				0925725A1D189EEF0016CE58 /* Data builders */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0925724B1D1877240016CE58 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				092572561D1884580016CE58 /* User.swift */,
+				0925725D1D189F780016CE58 /* Location.swift */,
+				0925725F1D189F8B0016CE58 /* UserName.swift */,
+				092572611D189F9D0016CE58 /* Picture.swift */,
+			);
+			name = DataModels;
+			sourceTree = "<group>";
+		};
+		0925724C1D18772B0016CE58 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0925724D1D1877E50016CE58 /* RESTClient.swift */,
+				0925724F1D187A120016CE58 /* RESTClientImplementation.swift */,
+				092572511D187F900016CE58 /* UsersAPIHelper.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		092572531D1881780016CE58 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				092572541D18819C0016CE58 /* NSError+Utils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		0925725A1D189EEF0016CE58 /* Data builders */ = {
+			isa = PBXGroup;
+			children = (
+				092572581D1888470016CE58 /* DataBuilder.swift */,
+				0925725B1D189F170016CE58 /* UserBuilder.swift */,
+			);
+			name = "Data builders";
+			sourceTree = "<group>";
+		};
+		2517502C832BEB166CBF9702 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A417AA434C039E41E9222780 /* Pods_TestCode.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD052D0B7210EDB2D4A8D961 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29CA9A1034F8A8B51997CEF3 /* Pods-TestCode.debug.xcconfig */,
+				426CC4E8E6A334243A9615FE /* Pods-TestCode.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 092572441D1876DE0016CE58 /* Build configuration list for PBXNativeTarget "TestCode" */;
 			buildPhases = (
+				4A1E3CF498A8C07B706CA974 /* [CP] Check Pods Manifest.lock */,
 				0925722E1D1876DD0016CE58 /* Sources */,
 				0925722F1D1876DD0016CE58 /* Frameworks */,
 				092572301D1876DD0016CE58 /* Resources */,
+				99C546CC3A22744DE4BB1EEF /* [CP] Embed Pods Frameworks */,
+				C9916B3CA45B9FD2DE4C9243 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,13 +243,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4A1E3CF498A8C07B706CA974 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		99C546CC3A22744DE4BB1EEF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestCode/Pods-TestCode-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9916B3CA45B9FD2DE4C9243 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestCode/Pods-TestCode-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0925722E1D1876DD0016CE58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092572621D189F9D0016CE58 /* Picture.swift in Sources */,
+				092572501D187A120016CE58 /* RESTClientImplementation.swift in Sources */,
 				092572381D1876DE0016CE58 /* ViewController.swift in Sources */,
+				0925725E1D189F780016CE58 /* Location.swift in Sources */,
+				0925725C1D189F170016CE58 /* UserBuilder.swift in Sources */,
+				0925724E1D1877E50016CE58 /* RESTClient.swift in Sources */,
+				092572521D187F900016CE58 /* UsersAPIHelper.swift in Sources */,
 				092572361D1876DE0016CE58 /* AppDelegate.swift in Sources */,
+				092572551D18819C0016CE58 /* NSError+Utils.swift in Sources */,
+				092572571D1884580016CE58 /* User.swift in Sources */,
+				092572591D1888470016CE58 /* DataBuilder.swift in Sources */,
+				092572601D189F8B0016CE58 /* UserName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +418,7 @@
 		};
 		092572451D1876DE0016CE58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29CA9A1034F8A8B51997CEF3 /* Pods-TestCode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TestCode/Info.plist;
@@ -258,6 +430,7 @@
 		};
 		092572461D1876DE0016CE58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 426CC4E8E6A334243A9615FE /* Pods-TestCode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TestCode/Info.plist;
@@ -286,6 +459,7 @@
 				092572461D1876DE0016CE58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
