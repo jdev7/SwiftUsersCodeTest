@@ -14,26 +14,20 @@ class ViewController: UIViewController {
     
     var users: [User]?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         self.usersAPIHelper.getUsersWithSuccess({ (users) in
-            self.users = users
+            print("users count: \(users.count)")
+            self.users = users.removeDuplicates()
             for user in users {
                 print(user.email)
             }
+            print("filtered users count: \(self.users?.count)")
         }) { (error) in
             print(error)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

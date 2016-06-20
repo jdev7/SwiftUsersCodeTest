@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User {
+struct User: Hashable, Equatable {
     let gender: String
     let email: String
     let phone: String
@@ -27,4 +27,14 @@ struct User {
         self.location = location
         self.picture = picture
     }
+    
+    var hashValue: Int {
+        get {
+            return self.email.hashValue ^ self.phone.hashValue ^ self.name.hashValue
+        }
+    }
 }
+func ==(lhs: User, rhs: User) -> Bool {
+    return lhs.email == rhs.email && lhs.phone == rhs.phone && lhs.name == rhs.name
+}
+
