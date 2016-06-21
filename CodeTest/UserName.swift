@@ -8,13 +8,14 @@
 
 import Foundation
 
-struct UserName: Equatable, Hashable {
+struct UserName: Equatable, Hashable, Comparable {
     let first: String
     let last: String
     
-    init(first: String, last: String) {
-        self.first = first
-        self.last = last
+    var fullName: String {
+        get {
+            return "\(first) \(last)"
+        }
     }
     
     var hashValue: Int {
@@ -26,4 +27,37 @@ struct UserName: Equatable, Hashable {
 
 func ==(lhs: UserName, rhs: UserName) -> Bool {
     return lhs.first == rhs.first && lhs.last == rhs.last
+}
+
+func <(lhs: UserName, rhs: UserName) -> Bool {
+    if lhs.first != rhs.first {
+        return lhs.first < rhs.first
+    }
+    else {
+        return lhs.last < rhs.last
+    }
+}
+func <=(lhs: UserName, rhs: UserName) -> Bool {
+    if lhs.first != rhs.first {
+        return lhs.first <= rhs.first
+    }
+    else {
+        return lhs.last <= rhs.last
+    }
+}
+func >=(lhs: UserName, rhs: UserName) -> Bool {
+    if lhs.first != rhs.first {
+        return lhs.first >= rhs.first
+    }
+    else {
+        return lhs.last >= rhs.last
+    }
+}
+func >(lhs: UserName, rhs: UserName) -> Bool {
+    if lhs.first != rhs.first {
+        return lhs.first > rhs.first
+    }
+    else {
+        return lhs.last > rhs.last
+    }
 }

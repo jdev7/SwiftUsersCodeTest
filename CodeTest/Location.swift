@@ -12,10 +12,4 @@ struct Location {
     let street: String
     let city: String
     let state: String
-    
-    init(street: String, city: String, state: String) {
-        self.street = street
-        self.city = city
-        self.state = state
-    }
 }

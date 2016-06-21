@@ -11,9 +11,4 @@ import Foundation
 struct Picture {
     let large: String
     let thumbnail: String
-    
-    init (large: String, thumbnail: String) {
-        self.large = large
-        self.thumbnail = thumbnail
-    }
 }
