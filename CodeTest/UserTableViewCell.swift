@@ -25,7 +25,10 @@ class UserTableViewCell: UITableViewCell {
         self.delegate?.didClickFavourite(self)
     }
     
-    func setFavouriteActive(active: Bool) {
+    func setFavouriteActive(active: Bool?) {
+        guard let active = active else {
+            return
+        }
         let color = active ? UIColor.orangeColor() : UIColor.lightGrayColor()
         self.btnFavourite.setTitleColor(color, forState: .Normal)
     }

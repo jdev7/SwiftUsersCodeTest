@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Hashable, Equatable, Comparable {
+class User: NSObject, Comparable {
     let gender: String
     let email: String
     let phone: String
@@ -17,12 +17,25 @@ struct User: Hashable, Equatable, Comparable {
     let location: Location
     let picture: Picture
     
-    var hashValue: Int {
+    var isFavourite = false
+    
+    init(name: UserName, gender: String, email: String, phone: String, registered: NSDate, location: Location, picture: Picture) {
+        self.name = name
+        self.gender = gender
+        self.email = email
+        self.phone = phone
+        self.registered = registered
+        self.location = location
+        self.picture = picture
+    }
+    
+    override var hashValue: Int {
         get {
             return self.email.hashValue ^ self.phone.hashValue ^ self.name.hashValue
         }
     }
 }
+
 func ==(lhs: User, rhs: User) -> Bool {
     return lhs.email == rhs.email && lhs.phone == rhs.phone && lhs.name == rhs.name
 }

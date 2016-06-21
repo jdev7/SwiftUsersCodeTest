@@ -24,7 +24,7 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="w9n-45-KA0">
                                         <rect key="frame" x="15" y="10" width="51" height="31"/>
                                         <connections>
-                                            <action selector="orderByGenre:" destination="BYZ-38-t0r" eventType="valueChanged" id="urP-xh-pB9"/>
+                                            <action selector="orderBy:" destination="BYZ-38-t0r" eventType="valueChanged" id="TpK-Bj-Jpl"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKC-u1-SRZ">
@@ -56,7 +56,7 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ns2-i8-7en">
                                         <rect key="frame" x="10" y="10" width="51" height="31"/>
                                         <connections>
-                                            <action selector="orderByName:" destination="BYZ-38-t0r" eventType="valueChanged" id="KXs-Na-InT"/>
+                                            <action selector="orderBy:" destination="BYZ-38-t0r" eventType="valueChanged" id="8Jf-HN-zVw"/>
                                         </connections>
                                     </switch>
                                 </subviews>

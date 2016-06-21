@@ -28,7 +28,7 @@ class UserBuilder: DataBuilder  {
             let userLocation = Location(street: locationStreet, city: locationCity, state: locationState)
             let userPicture = Picture(large: picLarge, thumbnail: picThumbnail)
             
-            return User(gender: gender, email: email, phone: phone, registered: registered, name: userName, location: userLocation, picture: userPicture)
+            return User(name: userName, gender: gender, email: email, phone: phone, registered: registered, location: userLocation, picture: userPicture)
         }
         return nil
     }

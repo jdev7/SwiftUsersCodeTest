@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserName: Equatable, Hashable, Comparable {
+class UserName: NSObject, Comparable {
     let first: String
     let last: String
     
@@ -18,7 +18,12 @@ struct UserName: Equatable, Hashable, Comparable {
         }
     }
     
-    var hashValue: Int {
+    init(first: String, last: String) {
+        self.first = first
+        self.last = last
+    }
+    
+    override var hashValue: Int {
         get {
             return self.first.hashValue ^ self.last.hashValue
         }

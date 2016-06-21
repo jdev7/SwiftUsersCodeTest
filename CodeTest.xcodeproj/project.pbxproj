@@ -25,6 +25,9 @@
 		092572661D18A0E40016CE58 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572651D18A0E40016CE58 /* Array+Utils.swift */; };
 		092572691D19921B0016CE58 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572681D19921B0016CE58 /* UserTableViewCell.swift */; };
 		0925726B1D19A0570016CE58 /* LoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925726A1D19A0570016CE58 /* LoadMoreTableViewCell.swift */; };
+		0925726D1D19DC150016CE58 /* UserOperationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925726C1D19DC150016CE58 /* UserOperationsHelper.swift */; };
+		0925726F1D19E6120016CE58 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925726E1D19E6120016CE58 /* UIViewController+Utils.swift */; };
+		092572711D19E77C0016CE58 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572701D19E77C0016CE58 /* UIView+Utils.swift */; };
 		B048E71A2CE25E4557B5138A /* Pods_TestCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A417AA434C039E41E9222780 /* Pods_TestCode.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +52,9 @@
 		092572651D18A0E40016CE58 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		092572681D19921B0016CE58 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0925726A1D19A0570016CE58 /* LoadMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreTableViewCell.swift; sourceTree = "<group>"; };
+		0925726C1D19DC150016CE58 /* UserOperationsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOperationsHelper.swift; sourceTree = "<group>"; };
+		0925726E1D19E6120016CE58 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		092572701D19E77C0016CE58 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		29CA9A1034F8A8B51997CEF3 /* Pods-TestCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestCode/Pods-TestCode.debug.xcconfig"; sourceTree = "<group>"; };
 		426CC4E8E6A334243A9615FE /* Pods-TestCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestCode/Pods-TestCode.release.xcconfig"; sourceTree = "<group>"; };
 		A417AA434C039E41E9222780 /* Pods_TestCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +157,9 @@
 			children = (
 				092572541D18819C0016CE58 /* NSError+Utils.swift */,
 				092572651D18A0E40016CE58 /* Array+Utils.swift */,
+				0925726C1D19DC150016CE58 /* UserOperationsHelper.swift */,
+				0925726E1D19E6120016CE58 /* UIViewController+Utils.swift */,
+				092572701D19E77C0016CE58 /* UIView+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -315,18 +324,21 @@
 			files = (
 				092572621D189F9D0016CE58 /* Picture.swift in Sources */,
 				092572501D187A120016CE58 /* RESTClientImplementation.swift in Sources */,
+				0925726F1D19E6120016CE58 /* UIViewController+Utils.swift in Sources */,
 				092572691D19921B0016CE58 /* UserTableViewCell.swift in Sources */,
 				092572381D1876DE0016CE58 /* UsersViewController.swift in Sources */,
 				0925725E1D189F780016CE58 /* Location.swift in Sources */,
 				092572661D18A0E40016CE58 /* Array+Utils.swift in Sources */,
 				0925725C1D189F170016CE58 /* UserBuilder.swift in Sources */,
 				0925724E1D1877E50016CE58 /* RESTClient.swift in Sources */,
+				0925726D1D19DC150016CE58 /* UserOperationsHelper.swift in Sources */,
 				0925726B1D19A0570016CE58 /* LoadMoreTableViewCell.swift in Sources */,
 				092572521D187F900016CE58 /* UsersAPIHelper.swift in Sources */,
 				092572361D1876DE0016CE58 /* AppDelegate.swift in Sources */,
 				092572551D18819C0016CE58 /* NSError+Utils.swift in Sources */,
 				092572571D1884580016CE58 /* User.swift in Sources */,
 				092572591D1888470016CE58 /* DataBuilder.swift in Sources */,
+				092572711D19E77C0016CE58 /* UIView+Utils.swift in Sources */,
 				092572601D189F8B0016CE58 /* UserName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

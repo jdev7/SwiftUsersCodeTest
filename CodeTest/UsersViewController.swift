@@ -12,7 +12,11 @@ class UsersViewController: UIViewController {
 
     let usersAPIHelper = UsersAPIHelper()
     
-    var users: [User]?
+    var users: [User]? {
+        didSet {
+            self.orderBy(self)
+        }
+    }
     var orderedUsers: [User]?
     var filteredUsers: [User]?
     
@@ -27,19 +31,30 @@ class UsersViewController: UIViewController {
         self.tableViewUsers.delegate = self;
         self.tableViewUsers.estimatedRowHeight = 80;
         self.tableViewUsers.rowHeight = UITableViewAutomaticDimension;
-        
-        
-        self.usersAPIHelper.getUsersWithSuccess({ (users) in
-            print("users count: \(users.count)")
-            self.users = users.removeDuplicates()
-            
-            self.tableViewUsers.reloadData()
-            for user in users {
-                print(user.email)
+        self.tableViewUsers.allowsMultipleSelection = false
+
+        self.getUsers()
+    }
+    
+    func getUsers () {
+        self.showLoading()
+        self.usersAPIHelper.getUsersWithSuccess({ (newUsers) in
+            print("users count: \(newUsers.count)")
+            if self.users == nil {
+                self.users = [User]()
             }
+            if var users = self.users {
+                users += newUsers
+                users = users.removeDuplicates()
+                self.users = users
+            }
+            self.tableViewUsers.reloadData()
+            self.stopLoading()
+            
             print("filtered users count: \(self.users?.count)")
         }) { (error) in
             print(error)
+            self.stopLoading()
         }
     }
     
@@ -56,20 +71,51 @@ class UsersViewController: UIViewController {
         return nil
     }
     
-    @IBAction func orderByGenre(sender: AnyObject) {
-        
+    func getLoadedUsers() -> [User] {
+        if let filteredUsers = self.filteredUsers {
+            return filteredUsers
+        }
+        else if let orderedUsers = self.orderedUsers {
+            return orderedUsers
+        }
+        else if let users = self.users {
+            return users
+        }
+        return [User]()
     }
-    @IBAction func orderByName(sender: AnyObject) {
+    
+    @IBAction func orderBy(sender: AnyObject) {
+        self.orderUsers(self.switchGenre.on, byName: self.switchName.on)
+    }
+    
+    func orderUsers(byGenre: Bool, byName: Bool) {
+        self.orderedUsers = nil
         
+        let unorderedUsers = getLoadedUsers()
+        if byGenre && byName {
+            self.orderedUsers = UserOperationsHelper.orderByGenreAndName(unorderedUsers)
+        }
+        else if byGenre {
+            self.orderedUsers = UserOperationsHelper.orderByGenre(unorderedUsers)
+        }
+        else if byName {
+            self.orderedUsers = UserOperationsHelper.orderByName(unorderedUsers)
+        }
+        self.tableViewUsers.reloadData()
     }
 }
 
 extension UsersViewController: UsersVCActions {
     func didClickLoadMore() {
-        print("load More")
+        self.getUsers()
     }
     func didClickFavourite(cell: UserTableViewCell) {
-        print("favourite")
+        if let indexPath = self.tableViewUsers.indexPathForCell(cell) {
+            if let user = self.getUser(indexPath) {
+                user.isFavourite = !user.isFavourite
+                cell.setFavouriteActive(user.isFavourite)
+            }
+        }
     }
 }
 
@@ -97,6 +143,8 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
         cell.lblEmail.text = user?.email
         cell.lblFullname.text = user?.name.fullName
         cell.lblPhone.text = user?.phone
+        
+        cell.setFavouriteActive(user?.isFavourite)
         
         cell.delegate = self
         
