@@ -99,7 +99,7 @@ class UsersViewController: UIViewController {
     }
     
     @IBAction func orderBy(sender: AnyObject) {
-        self.orderedUsers = self.orderUsers(self.switchGenre.on, byName: self.switchName.on)
+        self.orderUsers(self.switchGenre.on, byName: self.switchName.on)
     }
     
     func orderUsers(byGenre: Bool, byName: Bool) {
