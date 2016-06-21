@@ -14,7 +14,7 @@ class UsersViewController: UIViewController {
     
     var users: [User]? {
         didSet {
-            self.orderBy(self)
+            self.filterUsers(shouldOrderData: true)
         }
     }
     var orderedUsers: [User]?
@@ -115,7 +115,16 @@ class UsersViewController: UIViewController {
         else if byName {
             self.orderedUsers = UserOperationsHelper.orderByName(unorderedUsers)
         }
+
+        self.filterUsers(shouldOrderData: false)
+        
         self.tableViewUsers.reloadData()
+    }
+    
+    func filterUsers(shouldOrderData shouldOrderData: Bool) {
+        if let text = self.searchController.searchBar.text where text.characters.count > 0 {
+            self.searchForText(text, shouldOrderData: shouldOrderData)
+        }
     }
 }
 
@@ -178,13 +187,12 @@ extension UsersViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if let search = searchController.searchBar.text {
-            self.searchForText(search)
-            self.orderBy(self)
+            self.searchForText(search, shouldOrderData: true)
             self.tableViewUsers.reloadData()
         }
     }
     
-    func searchForText(text: String) {
+    func searchForText(text: String, shouldOrderData: Bool) {
         
         let namePredicate = NSPredicate(format: "SELF.name.firstName CONTAINS[c] %@", text)
         let surnamePredicate = NSPredicate(format: "SELF.name.lastName CONTAINS[c] %@", text)
@@ -192,6 +200,9 @@ extension UsersViewController: UISearchBarDelegate, UISearchResultsUpdating {
         let finalPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [namePredicate, surnamePredicate, emailPredicate])
         
         self.filteredUsers = nil
+        if shouldOrderData {
+            self.orderBy(self)
+        }
         let unfilteredUsers = self.getLoadedUsers()
         
         if text.characters.count > 0 {
