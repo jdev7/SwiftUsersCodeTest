@@ -20,6 +20,8 @@ class UsersViewController: UIViewController {
     var orderedUsers: [User]?
     var filteredUsers: [User]?
     
+    var searchController = UISearchController(searchResultsController: nil)
+    
     @IBOutlet weak var switchGenre: UISwitch!
     @IBOutlet weak var switchName: UISwitch!
     @IBOutlet weak var tableViewUsers: UITableView!
@@ -27,12 +29,24 @@ class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableViewUsers.dataSource = self;
-        self.tableViewUsers.delegate = self;
-        self.tableViewUsers.estimatedRowHeight = 80;
-        self.tableViewUsers.rowHeight = UITableViewAutomaticDimension;
+        self.tableViewUsers.dataSource = self
+        self.tableViewUsers.delegate = self
+        self.tableViewUsers.estimatedRowHeight = 80
+        self.tableViewUsers.rowHeight = UITableViewAutomaticDimension
         self.tableViewUsers.allowsMultipleSelection = false
-
+        self.tableViewUsers.keyboardDismissMode = .OnDrag
+        
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.barTintColor = UIColor.clearColor()
+        self.searchController.searchBar.backgroundImage = UIImage()
+        self.navigationItem.titleView = self.searchController.searchBar
+        self.searchController.searchBar.sizeToFit()
+        
+        self.definesPresentationContext = false
+        
         self.getUsers()
     }
     
@@ -85,7 +99,7 @@ class UsersViewController: UIViewController {
     }
     
     @IBAction func orderBy(sender: AnyObject) {
-        self.orderUsers(self.switchGenre.on, byName: self.switchName.on)
+        self.orderedUsers = self.orderUsers(self.switchGenre.on, byName: self.switchName.on)
     }
     
     func orderUsers(byGenre: Bool, byName: Bool) {
@@ -143,9 +157,9 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
         cell.lblEmail.text = user?.email
         cell.lblFullname.text = user?.name.fullName
         cell.lblPhone.text = user?.phone
-        
         cell.setFavouriteActive(user?.isFavourite)
         
+        cell.selectionStyle = .None
         cell.delegate = self
         
         return cell
@@ -157,5 +171,44 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
             return footerView
         }
         return nil
+    }
+}
+
+extension UsersViewController: UISearchBarDelegate, UISearchResultsUpdating {
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        if let search = searchController.searchBar.text {
+            self.searchForText(search)
+            self.orderBy(self)
+            self.tableViewUsers.reloadData()
+        }
+    }
+    
+    func searchForText(text: String) {
+        
+        let namePredicate = NSPredicate(format: "SELF.name.firstName CONTAINS[c] %@", text)
+        let surnamePredicate = NSPredicate(format: "SELF.name.lastName CONTAINS[c] %@", text)
+        let emailPredicate = NSPredicate(format: "SELF.email CONTAINS[c] %@", text)
+        let finalPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [namePredicate, surnamePredicate, emailPredicate])
+        
+        self.filteredUsers = nil
+        let unfilteredUsers = self.getLoadedUsers()
+        
+        if text.characters.count > 0 {
+            self.filteredUsers = unfilteredUsers.filter { finalPredicate.evaluateWithObject($0) }
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
     }
 }

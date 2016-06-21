@@ -9,60 +9,60 @@
 import Foundation
 
 class UserName: NSObject, Comparable {
-    let first: String
-    let last: String
+    let firstName: String
+    let lastName: String
     
     var fullName: String {
         get {
-            return "\(first) \(last)"
+            return "\(firstName) \(lastName)"
         }
     }
     
-    init(first: String, last: String) {
-        self.first = first
-        self.last = last
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
     }
     
     override var hashValue: Int {
         get {
-            return self.first.hashValue ^ self.last.hashValue
+            return self.firstName.hashValue ^ self.lastName.hashValue
         }
     }
 }
 
 func ==(lhs: UserName, rhs: UserName) -> Bool {
-    return lhs.first == rhs.first && lhs.last == rhs.last
+    return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
 }
 
 func <(lhs: UserName, rhs: UserName) -> Bool {
-    if lhs.first != rhs.first {
-        return lhs.first < rhs.first
+    if lhs.firstName != rhs.firstName {
+        return lhs.firstName < rhs.firstName
     }
     else {
-        return lhs.last < rhs.last
+        return lhs.lastName < rhs.lastName
     }
 }
 func <=(lhs: UserName, rhs: UserName) -> Bool {
-    if lhs.first != rhs.first {
-        return lhs.first <= rhs.first
+    if lhs.firstName != rhs.firstName {
+        return lhs.firstName <= rhs.firstName
     }
     else {
-        return lhs.last <= rhs.last
+        return lhs.lastName <= rhs.lastName
     }
 }
 func >=(lhs: UserName, rhs: UserName) -> Bool {
-    if lhs.first != rhs.first {
-        return lhs.first >= rhs.first
+    if lhs.firstName != rhs.firstName {
+        return lhs.firstName >= rhs.firstName
     }
     else {
-        return lhs.last >= rhs.last
+        return lhs.lastName >= rhs.lastName
     }
 }
 func >(lhs: UserName, rhs: UserName) -> Bool {
-    if lhs.first != rhs.first {
-        return lhs.first > rhs.first
+    if lhs.firstName != rhs.firstName {
+        return lhs.firstName > rhs.firstName
     }
     else {
-        return lhs.last > rhs.last
+        return lhs.lastName > rhs.lastName
     }
 }

@@ -24,7 +24,7 @@ class UserBuilder: DataBuilder  {
             let picThumbnail = jsonObject["picture"]["thumbnail"].string
         {
             let registered = NSDate(timeIntervalSince1970: registeredInSeconds)
-            let userName = UserName(first: firstName, last: lastName)
+            let userName = UserName(firstName: firstName, lastName: lastName)
             let userLocation = Location(street: locationStreet, city: locationCity, state: locationState)
             let userPicture = Picture(large: picLarge, thumbnail: picThumbnail)
             
