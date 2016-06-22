@@ -13,11 +13,7 @@ class UsersViewController: UIViewController {
     // MARK: - Properties
     let usersAPIHelper = UsersAPIHelper()
     
-    var users: [User]? {
-        didSet {
-            self.filterUsers(shouldOrderData: true)
-        }
-    }
+    var users: [User]? { didSet { self.filterUsers(shouldOrderData: true) } }
     var orderedUsers: [User]?
     var filteredUsers: [User]?
     
@@ -60,23 +56,8 @@ class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableViewUsers.dataSource = self
-        self.tableViewUsers.delegate = self
-        self.tableViewUsers.estimatedRowHeight = 80
-        self.tableViewUsers.rowHeight = UITableViewAutomaticDimension
-        self.tableViewUsers.allowsMultipleSelection = false
-        self.tableViewUsers.keyboardDismissMode = .OnDrag
-        
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.delegate = self
-        self.searchController.searchBar.barTintColor = UIColor.clearColor()
-        self.searchController.searchBar.backgroundImage = UIImage()
-        self.navigationItem.titleView = self.searchController.searchBar
-        self.searchController.searchBar.sizeToFit()
-        
-        self.definesPresentationContext = false
+        self.configureTableView()
+        self.configureSearchController()
         
         self.getUsers()
     }
@@ -192,114 +173,5 @@ extension UsersViewController: UsersVCActions {
                 cell.setFavouriteActive(user.isFavourite)
             }
         }
-    }
-}
-
-// MARK: - Tableview Handling
-extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let filteredUsers = self.filteredUsers {
-            return filteredUsers.count
-        }
-        else if let orderedUsers = self.orderedUsers {
-            return orderedUsers.count
-        }
-        else if let users = self.users {
-            return users.count
-        }
-        return 0
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView .dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath) as! UserTableViewCell
-        
-        let user = self.getUser(indexPath)
-        
-        cell.lblEmail.text = user?.email
-        cell.lblFullname.text = user?.name.fullName
-        cell.lblPhone.text = user?.phone
-        cell.setFavouriteActive(user?.isFavourite)
-        cell.imageURL = user?.picture.thumbnail
-        
-        cell.selectionStyle = .None
-        cell.delegate = self
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if let footerView = tableView.dequeueReusableCellWithIdentifier("loadMoreCell") as? LoadMoreTableViewCell {
-            footerView.delegate = self
-            footerView.btnLoadMore.tintColor = showingFavourites ? UIColor.lightGrayColor() : UIColor.brownColor()
-            footerView.btnLoadMore.enabled = !showingFavourites
-            return footerView
-        }
-        return nil
-    }
-    
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .Delete
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            if let user = self.getUser(indexPath) {
-                self.tableViewUsers.beginUpdates()
-                self.removeUser(user, array: &self.filteredUsers)
-                self.removeUser(user, array: &self.orderedUsers)
-                self.removeUser(user, array: &self.users)
-                self.tableViewUsers.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                self.tableViewUsers.endUpdates()
-            }
-        }
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("openUserDetail", sender: tableView)
-    }
-}
-
-// MARK: - Search Controller actions
-extension UsersViewController: UISearchBarDelegate, UISearchResultsUpdating {
-    
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if let search = searchController.searchBar.text {
-            self.searchForText(search, shouldOrderData: true)
-            self.tableViewUsers.reloadData()
-        }
-    }
-    
-    func searchForText(text: String, shouldOrderData: Bool) {
-        
-        let namePredicate = NSPredicate(format: "SELF.name.firstName CONTAINS[c] %@", text)
-        let surnamePredicate = NSPredicate(format: "SELF.name.lastName CONTAINS[c] %@", text)
-        let emailPredicate = NSPredicate(format: "SELF.email CONTAINS[c] %@", text)
-        let finalPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [namePredicate, surnamePredicate, emailPredicate])
-        
-        self.filteredUsers = nil
-        if shouldOrderData {
-            self.orderBy(self)
-        }
-        let unfilteredUsers = self.getLoadedUsers()
-        
-        if text.characters.count > 0 {
-            self.filteredUsers = unfilteredUsers.filter { finalPredicate.evaluateWithObject($0) }
-        }
-    }
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.showsCancelButton = false
     }
 }
