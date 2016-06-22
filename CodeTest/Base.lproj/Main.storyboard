@@ -132,7 +132,7 @@
                                                         <action selector="doFavouriteClick:" destination="GdK-Xg-Lh1" eventType="touchUpInside" id="KBa-jE-mM6"/>
                                                     </connections>
                                                 </button>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rSM-gS-gVG">
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rSM-gS-gVG">
                                                     <rect key="frame" x="32" y="26" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
@@ -179,6 +179,9 @@
                                                 <constraint firstItem="exd-tg-Q49" firstAttribute="centerX" secondItem="JHw-tj-oNu" secondAttribute="centerX" id="x9d-Q7-Yb6"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnLoadMore" destination="exd-tg-Q49" id="1a3-MI-Ysg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -213,7 +216,14 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="eaz-qM-sLC"/>
+                    <navigationItem key="navigationItem" id="eaz-qM-sLC">
+                        <barButtonItem key="rightBarButtonItem" title="Favourites" style="plain" id="Tj1-f1-sTi">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="showFavourites:" destination="BYZ-38-t0r" id="LGd-yC-NUD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="switchGenre" destination="w9n-45-KA0" id="O3j-Xk-SgU"/>
                         <outlet property="switchName" destination="ns2-i8-7en" id="hUx-zX-IyR"/>

@@ -20,12 +20,35 @@ class UsersViewController: UIViewController {
     var orderedUsers: [User]?
     var filteredUsers: [User]?
     
+    var showingFavourites = false
+    
     var searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var switchGenre: UISwitch!
     @IBOutlet weak var switchName: UISwitch!
     @IBOutlet weak var tableViewUsers: UITableView!
     
+    @IBAction func showFavourites(sender: AnyObject) {
+        showingFavourites = !showingFavourites
+        if let btnShowFavourites = sender as? UIBarButtonItem {
+            btnShowFavourites.tintColor = showingFavourites ? UIColor.orangeColor() : UIColor.lightGrayColor()
+        }
+        self.filteredUsers = nil
+        self.switchName.on = false
+        self.switchGenre.on = false
+        self.searchController.searchBar.text = ""
+        self.searchController.active = false
+        self.orderBy(self)
+        if showingFavourites {
+            self.navigationItem.titleView = nil
+            let unfilteredUsers = self.getLoadedUsers()
+            self.filteredUsers = unfilteredUsers.filter { $0.isFavourite }
+        }
+        else {
+            self.navigationItem.titleView = self.searchController.searchBar
+        }
+        self.tableViewUsers.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,6 +138,9 @@ class UsersViewController: UIViewController {
         else if byName {
             self.orderedUsers = UserOperationsHelper.orderByName(unorderedUsers)
         }
+        else if showingFavourites {
+            self.orderedUsers = self.filteredUsers
+        }
 
         self.filterUsers(shouldOrderData: false)
         
@@ -122,7 +148,10 @@ class UsersViewController: UIViewController {
     }
     
     func filterUsers(shouldOrderData shouldOrderData: Bool) {
-        if let text = self.searchController.searchBar.text where text.characters.count > 0 {
+        if showingFavourites {
+            self.filteredUsers = self.orderedUsers
+        }
+        else if let text = self.searchController.searchBar.text where text.characters.count > 0 {
             self.searchForText(text, shouldOrderData: shouldOrderData)
         }
     }
@@ -179,6 +208,8 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let footerView = tableView.dequeueReusableCellWithIdentifier("loadMoreCell") as? LoadMoreTableViewCell {
             footerView.delegate = self
+            footerView.btnLoadMore.tintColor = showingFavourites ? UIColor.lightGrayColor() : UIColor.brownColor()
+            footerView.btnLoadMore.enabled = !showingFavourites
             return footerView
         }
         return nil

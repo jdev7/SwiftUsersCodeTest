@@ -10,6 +10,7 @@ import UIKit
 
 class LoadMoreTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var btnLoadMore: UIButton!
     weak var delegate: UsersVCActions?
     @IBAction func doLoadMore(sender: AnyObject) {
         self.delegate?.didClickLoadMore()
