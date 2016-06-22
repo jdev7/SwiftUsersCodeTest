@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0923A3E11D1B2DB1009AFB20 /* UsersViewController+TableViewHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0923A3E01D1B2DB1009AFB20 /* UsersViewController+TableViewHandling.swift */; };
 		0923A3E31D1B2E2D009AFB20 /* UsersViewController+SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0923A3E21D1B2E2D009AFB20 /* UsersViewController+SearchController.swift */; };
+		0923A3E71D1B303B009AFB20 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0923A3E61D1B303B009AFB20 /* UserDetailViewController.swift */; };
+		0923A3E91D1B3730009AFB20 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0923A3E81D1B3730009AFB20 /* UIImageView+Utils.swift */; };
 		092572361D1876DE0016CE58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572351D1876DE0016CE58 /* AppDelegate.swift */; };
 		092572381D1876DE0016CE58 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092572371D1876DE0016CE58 /* UsersViewController.swift */; };
 		0925723B1D1876DE0016CE58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092572391D1876DE0016CE58 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		0923A3E01D1B2DB1009AFB20 /* UsersViewController+TableViewHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersViewController+TableViewHandling.swift"; sourceTree = "<group>"; };
 		0923A3E21D1B2E2D009AFB20 /* UsersViewController+SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersViewController+SearchController.swift"; sourceTree = "<group>"; };
+		0923A3E61D1B303B009AFB20 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		0923A3E81D1B3730009AFB20 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		092572321D1876DD0016CE58 /* TestCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		092572351D1876DE0016CE58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		092572371D1876DE0016CE58 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +89,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		0923A3E51D1B3019009AFB20 /* User Detail */ = {
+			isa = PBXGroup;
+			children = (
+				0923A3E61D1B303B009AFB20 /* UserDetailViewController.swift */,
+			);
+			name = "User Detail";
+			sourceTree = "<group>";
+		};
 		092572291D1876DD0016CE58 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				092572671D1991F70016CE58 /* Users */,
+				0923A3E51D1B3019009AFB20 /* User Detail */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -173,6 +186,7 @@
 				0925726C1D19DC150016CE58 /* UserOperationsHelper.swift */,
 				0925726E1D19E6120016CE58 /* UIViewController+Utils.swift */,
 				092572701D19E77C0016CE58 /* UIView+Utils.swift */,
+				0923A3E81D1B3730009AFB20 /* UIImageView+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -338,6 +352,7 @@
 			files = (
 				092572621D189F9D0016CE58 /* Picture.swift in Sources */,
 				092572501D187A120016CE58 /* RESTClientImplementation.swift in Sources */,
+				0923A3E91D1B3730009AFB20 /* UIImageView+Utils.swift in Sources */,
 				0925726F1D19E6120016CE58 /* UIViewController+Utils.swift in Sources */,
 				092572691D19921B0016CE58 /* UserTableViewCell.swift in Sources */,
 				092572381D1876DE0016CE58 /* UsersViewController.swift in Sources */,
@@ -350,6 +365,7 @@
 				0925726B1D19A0570016CE58 /* LoadMoreTableViewCell.swift in Sources */,
 				092572521D187F900016CE58 /* UsersAPIHelper.swift in Sources */,
 				092572361D1876DE0016CE58 /* AppDelegate.swift in Sources */,
+				0923A3E71D1B303B009AFB20 /* UserDetailViewController.swift in Sources */,
 				092572551D18819C0016CE58 /* NSError+Utils.swift in Sources */,
 				092572571D1884580016CE58 /* User.swift in Sources */,
 				092572591D1888470016CE58 /* DataBuilder.swift in Sources */,

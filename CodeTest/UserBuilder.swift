@@ -18,8 +18,8 @@ class UserBuilder: DataBuilder  {
             let firstName = jsonObject["name"]["first"].string,
             let lastName = jsonObject["name"]["last"].string,
             let locationStreet = jsonObject["location"]["street"].string,
-            let locationCity = jsonObject["location"]["street"].string,
-            let locationState = jsonObject["location"]["street"].string,
+            let locationCity = jsonObject["location"]["city"].string,
+            let locationState = jsonObject["location"]["state"].string,
             let picLarge = jsonObject["picture"]["large"].string,
             let picThumbnail = jsonObject["picture"]["thumbnail"].string
         {

@@ -13,3 +13,7 @@ struct Location {
     let city: String
     let state: String
 }
+
+extension Location: CustomStringConvertible {
+    var description: String { return "\(street)\n\(city) - \(state)" }
+}

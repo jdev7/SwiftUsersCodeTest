@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireImage
 
 protocol UsersVCActions: class {
     func didClickFavourite(cell:UserTableViewCell)
@@ -25,19 +24,9 @@ class UserTableViewCell: UITableViewCell {
     
     var imageURL: String? {
         didSet {
-            if let imageURL = imageURL, let url = NSURL(string: imageURL) {
-                
-                self.activityIndicator.startAnimating()
-                self.ivUserPicture.af_setImageWithURL(url,
-                                                      placeholderImage: nil,
-                                                      filter: nil,
-                                                      progress: nil,
-                                                      progressQueue: dispatch_get_main_queue(),
-                                                      imageTransition: .CrossDissolve(0.3),
-                                                      runImageTransitionIfCached: true,
-                                                      completion: { (response) in
-                                                        self.activityIndicator.stopAnimating()
-                })
+            self.activityIndicator.startAnimating()
+            self.ivUserPicture.loadImageInBackground(imageURL) { 
+                self.activityIndicator.stopAnimating()
             }
         }
     }

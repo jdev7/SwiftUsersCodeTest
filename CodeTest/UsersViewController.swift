@@ -62,6 +62,16 @@ class UsersViewController: UIViewController {
         self.getUsers()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = ""
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "Users"
+    }
+    
     // MARK: - Data Manipulation
     func getUsers () {
         self.showLoading()
@@ -151,11 +161,11 @@ class UsersViewController: UIViewController {
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "openUserDetail" {
-            guard let indexPath = self.tableViewUsers.indexPathForSelectedRow else {
-                return
-            }
+            guard let indexPath = self.tableViewUsers.indexPathForSelectedRow else { return }
+            guard let vc = segue.destinationViewController as? UserDetailViewController else { return }
             if let user = self.getUser(indexPath) {
                 print(user)
+                vc.user = user
             }
         }
     }
