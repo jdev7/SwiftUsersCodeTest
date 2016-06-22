@@ -10,6 +10,7 @@ import UIKit
 
 class UsersViewController: UIViewController {
 
+    // MARK: - Properties
     let usersAPIHelper = UsersAPIHelper()
     
     var users: [User]? {
@@ -28,6 +29,7 @@ class UsersViewController: UIViewController {
     @IBOutlet weak var switchName: UISwitch!
     @IBOutlet weak var tableViewUsers: UITableView!
     
+    // MARK: - User Actions
     @IBAction func showFavourites(sender: AnyObject) {
         showingFavourites = !showingFavourites
         if let btnShowFavourites = sender as? UIBarButtonItem {
@@ -49,6 +51,12 @@ class UsersViewController: UIViewController {
         }
         self.tableViewUsers.reloadData()
     }
+    
+    @IBAction func orderBy(sender: AnyObject) {
+        self.orderUsers(self.switchGenre.on, byName: self.switchName.on)
+    }
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +81,7 @@ class UsersViewController: UIViewController {
         self.getUsers()
     }
     
+    // MARK: - Data Manipulation
     func getUsers () {
         self.showLoading()
         self.usersAPIHelper.getUsersWithSuccess({ (newUsers) in
@@ -121,10 +130,6 @@ class UsersViewController: UIViewController {
         return [User]()
     }
     
-    @IBAction func orderBy(sender: AnyObject) {
-        self.orderUsers(self.switchGenre.on, byName: self.switchName.on)
-    }
-    
     func orderUsers(byGenre: Bool, byName: Bool) {
         self.orderedUsers = nil
         
@@ -155,8 +160,27 @@ class UsersViewController: UIViewController {
             self.searchForText(text, shouldOrderData: shouldOrderData)
         }
     }
+    
+    func removeUser(user: User, inout array:[User]?) {
+        if let index = array?.indexOf(user) {
+            array?.removeAtIndex(index)
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "openUserDetail" {
+            guard let indexPath = self.tableViewUsers.indexPathForSelectedRow else {
+                return
+            }
+            if let user = self.getUser(indexPath) {
+                print(user)
+            }
+        }
+    }
 }
 
+// MARK: - Cell User Actions
 extension UsersViewController: UsersVCActions {
     func didClickLoadMore() {
         self.getUsers()
@@ -171,6 +195,7 @@ extension UsersViewController: UsersVCActions {
     }
 }
 
+// MARK: - Tableview Handling
 extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -232,13 +257,12 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func removeUser(user: User, inout array:[User]?) {
-        if let index = array?.indexOf(user) {
-            array?.removeAtIndex(index)
-        }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("openUserDetail", sender: tableView)
     }
 }
 
+// MARK: - Search Controller actions
 extension UsersViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {

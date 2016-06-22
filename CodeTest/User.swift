@@ -19,6 +19,8 @@ class User: NSObject, Comparable {
     
     var isFavourite = false
     
+    override var description: String { return "\(self.name)" }
+    
     init(name: UserName, gender: String, email: String, phone: String, registered: NSDate, location: Location, picture: Picture) {
         self.name = name
         self.gender = gender
@@ -35,6 +37,7 @@ class User: NSObject, Comparable {
         }
     }
 }
+
 
 func ==(lhs: User, rhs: User) -> Bool {
     return lhs.email == rhs.email && lhs.phone == rhs.phone && lhs.name == rhs.name

@@ -11,12 +11,8 @@ import Foundation
 class UserName: NSObject, Comparable {
     let firstName: String
     let lastName: String
-    
-    var fullName: String {
-        get {
-            return "\(firstName) \(lastName)"
-        }
-    }
+    var fullName: String { return self.description }
+    override var description: String { return "\(self.firstName) \(self.lastName)" }
     
     init(firstName: String, lastName: String) {
         self.firstName = firstName
