@@ -177,9 +177,32 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let footerView = tableView.dequeueReusableCellWithIdentifier("loadMoreCell") as? LoadMoreTableViewCell {
             footerView.delegate = self
-            return footerView
+            return footerView.contentView
         }
         return nil
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .Delete
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            if let user = self.getUser(indexPath) {
+                self.tableViewUsers.beginUpdates()
+                self.removeUser(user, array: &self.filteredUsers)
+                self.removeUser(user, array: &self.orderedUsers)
+                self.removeUser(user, array: &self.users)
+                self.tableViewUsers.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                self.tableViewUsers.endUpdates()
+            }
+        }
+    }
+    
+    func removeUser(user: User, inout array:[User]?) {
+        if let index = array?.indexOf(user) {
+            array?.removeAtIndex(index)
+        }
     }
 }
 
