@@ -158,6 +158,7 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return 0
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView .dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath) as! UserTableViewCell
         
@@ -167,6 +168,7 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
         cell.lblFullname.text = user?.name.fullName
         cell.lblPhone.text = user?.phone
         cell.setFavouriteActive(user?.isFavourite)
+        cell.imageURL = user?.picture.thumbnail
         
         cell.selectionStyle = .None
         cell.delegate = self
@@ -177,7 +179,7 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let footerView = tableView.dequeueReusableCellWithIdentifier("loadMoreCell") as? LoadMoreTableViewCell {
             footerView.delegate = self
-            return footerView.contentView
+            return footerView
         }
         return nil
     }
