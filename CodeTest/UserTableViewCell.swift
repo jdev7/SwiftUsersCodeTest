@@ -59,4 +59,10 @@ class UserTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.setFavouriteActive(false)
     }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        self.ivUserPicture.layer.cornerRadius = self.ivUserPicture.frame.width / 2
+        self.ivUserPicture.layer.masksToBounds = true
+    }
 }
